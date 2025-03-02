@@ -461,7 +461,7 @@ const UserEdit = () => {
           </div>
 
           <div>
-            <label className="block text-sm text-gray-500">Photo URL</label>
+            <label className="block text-sm text-gray-500">University</label>
             <input
               type="text"
               name="university"
