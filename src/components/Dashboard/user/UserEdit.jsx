@@ -307,6 +307,7 @@ const UserEdit = () => {
     district: users.district || "",
     upazila: users.upazila || "",
     email: users.email || "",
+    university: users.university || "",
   });
 
   const handleChange = (e) => {
@@ -457,6 +458,18 @@ const UserEdit = () => {
                   </option>
                 ))}
             </select>
+          </div>
+
+          <div>
+            <label className="block text-sm text-gray-500">Photo URL</label>
+            <input
+              type="text"
+              name="university"
+              value={formData.university}
+              onChange={handleChange}
+              className="input input-bordered w-full"
+              required
+            />
           </div>
 
           <div className="sm:col-span-2 flex justify-end">
