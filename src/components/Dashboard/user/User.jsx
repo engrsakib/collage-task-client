@@ -100,8 +100,8 @@ const User = () => {
                 <p className="font-medium">{users?.upazila}</p>
               </div>
               <div>
-                <p className="text-sm text-gray-500">Total Post</p>
-                <p className="font-medium">{users?.last || "N/A"}</p>
+                <p className="text-sm text-gray-500">University</p>
+                <p className="font-medium">{users?.university || "N/A"}</p>
               </div>
             </div>
             <div className="mt-6">

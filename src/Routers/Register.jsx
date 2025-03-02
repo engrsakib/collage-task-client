@@ -298,6 +298,7 @@ const Register = () => {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    university: "",
     photoUrl: "",
     gender: "",
     district: "",
@@ -473,6 +474,19 @@ const Register = () => {
                   placeholder="Email Address"
                   className="input input-bordered w-full"
                   value={formData.email}
+                  onChange={handleChange}
+                  required
+                />
+              </div>
+
+              {/* Email */}
+              <div className="mb-4">
+                <input
+                  type="text"
+                  name="university"
+                  placeholder="university Name"
+                  className="input input-bordered w-full"
+                  value={formData.university}
                   onChange={handleChange}
                   required
                 />
