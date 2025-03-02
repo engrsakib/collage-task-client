@@ -67,8 +67,8 @@ const LogIn = () => {
         {/* Left Side Image */}
         <div className="hidden lg:flex w-1/2 justify-center">
           <img
-            src="https://i.ibb.co.com/1GkjDmZn/project-deadline-job-organization-poster-107791-1627.jpg"
-            alt="Login Illustration"
+            src="https://i.ibb.co.com/XZy2mLQ7/design-community-concept-illustration-114360-1402.jpg"
+            alt="login"
             className="w-full rounded-lg shadow-lg"
           />
         </div>

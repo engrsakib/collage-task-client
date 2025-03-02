@@ -432,7 +432,7 @@ const Register = () => {
         {/* left side */}
         <div className="hidden lg:flex w-1/2 justify-center">
           <img
-            src="https://i.ibb.co.com/0v7Z4ps/pros-cons-concept-illustration-114360-14879.jpg"
+            src="https://i.ibb.co.com/zWv0WK1z/gradient-circular-organizational-chart-infographic-design-52683-90391.jpg"
             alt="Register Illustration"
             className="w-full rounded-lg shadow-lg"
           />
