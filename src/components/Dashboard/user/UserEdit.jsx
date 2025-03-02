@@ -468,7 +468,7 @@ const UserEdit = () => {
               value={formData.university}
               onChange={handleChange}
               className="input input-bordered w-full"
-              required
+              readOnly
             />
           </div>
 

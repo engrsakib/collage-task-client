@@ -64,18 +64,18 @@ const Header = () => {
       <NavLink
         to="/"
         className={({ isActive }) =>
-          `text-2xl ${isActive ? "text-info" : "text-gray-600"} space-y-3`
+          `text-xl ${isActive ? "text-info" : "text-gray-600"} space-y-3`
         }
       >
-        <FaHome />
+        Home
       </NavLink>
       <NavLink
         to="/add-Task"
         className={({ isActive }) =>
-          `text-2xl ${isActive ? "text-info" : "text-gray-600"} `
+          `text-xl ${isActive ? "text-info" : "text-gray-600"} `
         }
       >
-        <BiSolidMessageSquareAdd />
+        Colleges
       </NavLink>
     </>
   );
