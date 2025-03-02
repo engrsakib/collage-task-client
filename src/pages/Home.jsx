@@ -1,6 +1,7 @@
 import React, { useContext, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { AuthContext } from '../provider/AuthProvider'
+import CollageGallery from '../components/HomeComponents/CollageGalery';
 
 
 
@@ -12,6 +13,11 @@ const Home = () => {
       <>
         <div className='container mt-20 lg:mt-36'>
           
+
+          {/* image galery */}
+          <div>
+            <CollageGallery />
+          </div>
         </div>
 
         <Helmet>
