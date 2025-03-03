@@ -83,7 +83,7 @@ const Details = () => {
           />
           <h1 className="text-3xl font-bold mt-4">{data?.name}</h1>
           <p className="text-gray-600 mt-2">
-            <span className="font-semibold badge ">Types: {"University"} </span>
+            <span className="font-semibold badge ">Types: {"Private University"} </span>
           </p>
           <div
             className={`${
@@ -103,8 +103,13 @@ const Details = () => {
           >
             {data?.descriptions}
           </p>
+          <img
+            src={data?.images[1]}
+            alt="Fundraiser"
+            className="rounded-lg shadow-md w-full h-[400px] object-cover"
+          />
         </div>
-
+            
         {/* Right Section */}
         <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md">
           <h3 className="mt-6 text-lg font-semibold">Admission Requirment</h3>
@@ -137,6 +142,14 @@ const Details = () => {
             </li>
 
             <h3 className="mt-6 text-lg font-semibold">Events</h3>
+
+            <p
+            className={`${
+              dark ? "text-gray-200" : "text-gray-800"
+            } mt-4 text-justify`}
+          >
+            {data?.events?.descriptions}
+          </p>
 
             <li className="flex justify-between">
               <p className="font-medium">Academic</p>
@@ -177,9 +190,25 @@ const Details = () => {
               </div>
             </li>
 
-
-
-
+            <h3 className="mt-6 text-lg font-semibold">Research Works</h3>
+            <li className="flex justify-between">
+              <p className="font-medium">Title</p>
+              <p className="text-gray-500">
+                {data?.research_works[0]?.title}
+              </p>
+            </li>
+            <li className="flex justify-between">
+              <p className="font-medium">Department</p>
+              <p className="text-gray-500">
+                {data?.research_works[0]?.department}
+              </p>
+            </li>
+            <li className="flex justify-between">
+              <p className="font-medium">Publication Link</p>
+              <a href={data?.research_works[0]?.publication_link} className="btn btn-sm ">
+                Read Article
+              </a>
+            </li>
           </ul>
         </div>
       </div>
