@@ -1,35 +1,54 @@
 import React, { useContext, useEffect, useState } from "react";
-import { useLoaderData, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import { AuthContext } from "../provider/AuthProvider";
+import { useQuery } from "@tanstack/react-query";
+import axios from "axios";
 
 const Details = () => {
   const { dark, setActive, active } = useContext(AuthContext);
-  const data = "sakb";
+
   const navigate = useNavigate();
-  const {user} = useContext(AuthContext);
-  const {id:dataId} = useParams();
+  const { user } = useContext(AuthContext);
+  const { id: dataId } = useParams();
 
   const {
-    _id= 1,
-    name = "Sakib",
-    mail = "",
-    title ="",
-    photoURL ="",
-    type ="",
-    description ="",
-    moneyNedd ="",
-    minimumMoney ="",
-    deadline ="",
-  } = data[0];
+    isLoading: isPending,
+    data: data = [],
+    refetch,
+  } = useQuery({
+    queryKey: ["collage-details"],
+    queryFn: async () => {
+      try {
+        const response = await axios.get(
+          `http://localhost:5000/university/${dataId}`
+        );
+        return response.data;
+      } catch (error) {
+        console.error("Error fetching blogs:", error);
+        return [];
+      }
+    },
+  });
 
-  
-  
+  console.log(data);
+  const {
+    _id,
+    name,
+    mail,
+    title,
+    photoURL,
+    type,
+    description,
+    moneyNedd,
+    minimumMoney,
+    deadline,
+  } = data;
+
   // donetation section handel
-  const handleDonate = (id)=>{
-    if(active){
-       
+  const handleDonate = (id) => {
+    if (active) {
       if (name === user.name) {
         Swal.fire({
           icon: "error",
@@ -39,50 +58,50 @@ const Details = () => {
         return;
       }
       navigate(`/donation/all-campagion/details/donated/${id}`);
-
-        
-
-    }else{
+    } else {
       Swal.fire({
         icon: "error",
         title: "Oops...",
         text: "Donations date!",
       });
     }
-  }
+  };
   return (
     <>
       <div className="flex flex-col mt-12 lg:flex-row gap-8 px-6 lg:px-16 py-8">
         {/* Left Section */}
         <div className="flex-1">
           <img
-            src={photoURL}
+            src={data?.images[0]}
             alt="Fundraiser"
             className="rounded-lg shadow-md w-full h-[400px] object-cover"
           />
-          <h1 className="text-3xl font-bold mt-4">{title}</h1>
+          <h1 className="text-3xl font-bold mt-4">{data?.name}</h1>
           <p className="text-gray-600 mt-2">
-            <span className="font-semibold badge ">Types: {type} </span>
+            <span className="font-semibold badge ">Types: {"University"} </span>
           </p>
           <div
             className={`${
-              active ? "bg-green-400" : "bg-red-400"
+              active ? "bg-info" : "bg-red-400"
             } mt-4 p-4 rounded-md`}
           >
             <p className="text-sm font-medium">
               <i className="fas fa-shield-alt mr-2 text-white">
-                {active ? "Active" : "Closed"}
+                {active ? "Admisson on going" : "Closed"}
               </i>
             </p>
           </div>
-          <p className={`${dark ? "text-gray-200" : "text-gray-800"} mt-4`}>
-            {description}
+          <p
+            className={`${
+              dark ? "text-gray-200" : "text-gray-800"
+            } mt-4 text-justify`}
+          >
+            {data?.descriptions}
           </p>
         </div>
 
         {/* Right Section */}
         <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md">
-          <h2 className="text-2xl font-bold">{moneyNedd} TK needed</h2>
           <p className="text-gray-600">
             Name: {name} <br /> Mail: {mail}
           </p>
@@ -95,7 +114,7 @@ const Details = () => {
             </div>
             <p className="text-sm text-gray-500 mt-1">74%</p>
           </div>
-          
+
           <button
             onClick={() => {
               handleDonate(_id);
