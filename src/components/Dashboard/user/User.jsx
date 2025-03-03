@@ -10,11 +10,12 @@ import { FaPen } from "react-icons/fa";
 import useGetAllUsers from "./AllUsers/useGetAllUsers";
 import axios from "axios";
 import { Helmet } from "react-helmet";
+import useGetAdmitionUser from "./AllUsers/useGetAdmitionUser";
 const User = () => {
   const { user, dark, setUser } = useContext(AuthContext);
     const navigate = useNavigate();
    
-    
+    const { admitedUser } = useGetAdmitionUser();
     const { users, refetch, isPending } = useGetAllUsers(user);
     // console.log(users)
     if(isPending)(
@@ -101,7 +102,7 @@ const User = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-500">University</p>
-                <p className="font-medium">{users?.university || "N/A"}</p>
+                <p className="font-medium">{admitedUser?.university || "N/A"}</p>
               </div>
             </div>
             <div className="mt-6">

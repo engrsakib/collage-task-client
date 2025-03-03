@@ -6,15 +6,23 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import { useQuery } from "@tanstack/react-query";
 import useGetAdmitionUser from "../components/Dashboard/user/AllUsers/useGetAdmitionUser";
+import MyCollageDetails from "./MyCollageDetails";
 
 const MyCollege = () => {
   
-    const { admitedUser, refetch } = useGetAdmitionUser();
+    const { admitedUser, refetch, isPending } = useGetAdmitionUser();
 
-    console.log(admitedUser)
+    if (isPending) {
+        return <Loading></Loading>;
+    }
+
+    
 
   return (
     <>
+        <div>
+            <MyCollageDetails ></MyCollageDetails>
+        </div>
       <Helmet>
         <meta charSet="utf-8" />
         <title>My College</title>

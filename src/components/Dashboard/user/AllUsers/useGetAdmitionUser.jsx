@@ -14,10 +14,10 @@ const useGetAdmitionUser = () => {
     data: admitedUser = [],
     refetch,
   } = useQuery({
-    queryKey: ["collage-my"],
+    queryKey: ["collage-myusers-admitation"],
     queryFn: async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/admission/${user.email}`);
+        const response = await axios.get(`http://localhost:5000/admission/${users?.email}`);
         return response.data;
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -25,10 +25,8 @@ const useGetAdmitionUser = () => {
       }
     },
   });
-    if (isPending) {
-        return <Loading></Loading>;
-    }
-    return { admitedUser, refetch };
+    
+    return { admitedUser, refetch, isPending };
 };
 
 export default useGetAdmitionUser;
