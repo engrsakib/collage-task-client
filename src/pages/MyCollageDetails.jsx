@@ -78,6 +78,11 @@ const MyCollageDetails = () => {
       });
     }
   };
+  if(data.length === 0){
+    return <div className="flex justify-center items-center h-screen mt-3">
+        <img className="w-[40%]" src="https://img.freepik.com/free-vector/no-data-concept-illustration_114360-626.jpg?t=st=1741038398~exp=1741041998~hmac=4c5905021c072f768e1db8c00c80bff28422b16b5b3cb1904523222939eb34a4&w=1060"></img>
+
+    </div>}
   return (
     <>
       <div className="flex flex-col mt-12 lg:flex-row gap-8 px-6 lg:px-16 py-8">
