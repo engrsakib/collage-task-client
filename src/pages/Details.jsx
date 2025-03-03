@@ -111,15 +111,75 @@ const Details = () => {
           <ul className="mt-4 space-y-2">
             <li className="flex justify-between">
               <p className="font-medium">Applications Fees</p>
-              <p className="text-gray-500">{data?.admission_process?.fees?.application_fee
-              }</p>
+              <p className="text-gray-500">
+                {data?.admission_process?.fees?.application_fee}
+              </p>
             </li>
 
             <li className="flex justify-between">
               <p className="font-medium">Semister Fees</p>
-              <p className="text-gray-500">{data?.admission_process?.fees?.semester_fee
-              }</p>
+              <p className="text-gray-500">
+                {data?.admission_process?.fees?.semester_fee}
+              </p>
             </li>
+
+            <li className="flex justify-between">
+              <p className="font-medium">Admission Process</p>
+              <div className="flex flex-col">
+                <p className="text-gray-500 text-right">
+                  {data?.admission_process?.requirements?.map((req, index) => (
+                    <p key={index} className="text-gray-700">
+                      {req}
+                    </p>
+                  ))}
+                </p>
+              </div>
+            </li>
+
+            <h3 className="mt-6 text-lg font-semibold">Events</h3>
+
+            <li className="flex justify-between">
+              <p className="font-medium">Academic</p>
+              <div className="flex flex-col">
+                <p className="text-gray-500 text-right">
+                  {data?.events?.academic?.map((event, index) => (
+                    <p key={index} className="text-gray-700">
+                      {event}
+                    </p>
+                  ))}
+                </p>
+              </div>
+            </li>
+
+            <li className="flex justify-between">
+              <p className="font-medium">cultural</p>
+              <div className="flex flex-col">
+                <p className="text-gray-500 text-right">
+                  {data?.events?.cultural?.map((event, index) => (
+                    <p key={index} className="text-gray-700">
+                      {event}
+                    </p>
+                  ))}
+                </p>
+              </div>
+            </li>
+
+            <li className="flex justify-between">
+              <p className="font-medium">technical</p>
+              <div className="flex flex-col">
+                <p className="text-gray-500 text-right">
+                  {data?.events?.technical?.map((event, index) => (
+                    <p key={index} className="text-gray-700">
+                      {event}
+                    </p>
+                  ))}
+                </p>
+              </div>
+            </li>
+
+
+
+
           </ul>
         </div>
       </div>
