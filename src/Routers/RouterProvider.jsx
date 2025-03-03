@@ -12,6 +12,7 @@ import UserEdit from "../components/Dashboard/user/UserEdit";
 import Collage from "../pages/Collage";
 import Details from "../pages/Details";
 import Admission from "../pages/Admission";
+import MyCollege from "../pages/MyCollege";
 
 
 const router = createBrowserRouter([
@@ -35,6 +36,10 @@ const router = createBrowserRouter([
       {
         path: "/admission",
         element: <Privete> <Admission></Admission> </Privete>,
+      },
+      {
+        path: "/my-college",
+        element: <Privete> <MyCollege></MyCollege> </Privete>,
       },
       
     ],

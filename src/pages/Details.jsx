@@ -1,251 +1,211 @@
-import React, { useContext, useEffect, useState } from "react";
-import { useNavigate, useParams } from "react-router-dom";
-import Swal from "sweetalert2";
-import { Helmet } from "react-helmet";
-import { AuthContext } from "../provider/AuthProvider";
-import { useQuery } from "@tanstack/react-query";
+import React, { useState, useContext } from "react";
 import axios from "axios";
-import Loading from "../components/Loading";
+import Swal from "sweetalert2";
+import { AuthContext } from "../provider/AuthProvider";
 
-const Details = () => {
-  const { dark, setActive, active } = useContext(AuthContext);
-
-  const navigate = useNavigate();
+const Admission = () => {
   const { user } = useContext(AuthContext);
-  const { id: dataId } = useParams();
+  const universities = [
+    "East West University",
+    "Southeast University",
+    "University of Liberal Arts Bangladesh",
+    "Dhaka International University",
+    "American International University-Bangladesh",
+    "Independent University, Bangladesh",
+    "BRAC University",
+    "North South University",
+  ];
 
-  const {
-    isLoading: isPending,
-    data: data = {},
-    refetch,
-  } = useQuery({
-    queryKey: ["collage-details"],
-    queryFn: async () => {
-      try {
-        const response = await axios.get(
-          `http://localhost:5000/university/${dataId}`
-        );
-        return response.data;
-      } catch (error) {
-        console.error("Error fetching blogs:", error);
-        return [];
-      }
-    },
+  const [formData, setFormData] = useState({
+    candidateName: "",
+    subject: "",
+    email: "",
+    phone: "",
+    address: "",
+    dob: "",
+    university: "",
   });
 
-  if (isPending) {
-    return <Loading></Loading>;
-  }
+  const [image, setImage] = useState(null);
 
-//   console.log(data);
-  const {
-    _id,
-    name,
-    mail,
-    title,
-    photoURL,
-    type,
-    description,
-    moneyNedd,
-    minimumMoney,
-    deadline,
-  } = data;
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setFormData({ ...formData, [name]: value });
+  };
 
-  // donetation section handel
-  const handleDonate = (id) => {
-    if (active) {
-      if (name === user.name) {
-        Swal.fire({
-          icon: "error",
-          title: "Donation Faild",
-          text: `You can't donated in your own campagion`,
-        });
-        return;
-      }
-      navigate(`/donation/all-campagion/details/donated/${id}`);
-    } else {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Donations date!",
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+
+    if (!file) {
+      Swal.fire("Error", "Please select an image", "error");
+      return;
+    }
+
+    if (file.size > 200 * 1024) {
+      Swal.fire("Error", "Image size must be less than 200KB", "error");
+      return;
+    }
+
+    if (!file.type.startsWith("image/")) {
+      Swal.fire("Error", "Only JPG and PNG images are allowed", "error");
+      return;
+    }
+
+    setImage(file);
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      // Admission data submission
+      const response = await axios.post("http://localhost:5000/admission", {
+        candidateName: formData.candidateName,
+        subject: formData.subject,
+        email: formData.email,
+        phone: formData.phone,
+        address: formData.address,
+        dob: formData.dob,
+        university: formData.university,
+        userId: user._id,
+        userMail: user.email,
       });
+
+      if (response.data.success) {
+        Swal.fire("Success", "Admission form submitted!", "success");
+
+        // If Image Exists, Upload & Update User Profile
+        if (image) {
+          const imageData = new FormData();
+          imageData.append("image", image);
+
+          const imgResponse = await axios.post(
+            `https://api.imgbb.com/1/upload?key=${import.meta.env.VITE_imgbb}`,
+            imageData
+          );
+
+          const imageUrl = imgResponse.data.data.url;
+
+          await axios.patch(`http://localhost:5000/users/${user._id}`, {
+            imageUrl,
+          });
+
+          Swal.fire("Success", "Profile picture updated!", "success");
+        }
+
+        setFormData({
+          candidateName: "",
+          subject: "",
+          email: "",
+          phone: "",
+          address: "",
+          dob: "",
+          university: "",
+        });
+        setImage(null);
+      }
+    } catch (error) {
+      Swal.fire("Error", "Something went wrong!", "error");
+      console.error(error);
     }
   };
+
   return (
-    <>
-      <div className="flex flex-col mt-12 lg:flex-row gap-8 px-6 lg:px-16 py-8">
-        {/* Left Section */}
-        <div className="flex-1">
-          <img
-            src={data?.images[0]}
-            alt="Fundraiser"
-            className="rounded-lg shadow-md w-full h-[400px] object-cover"
+    <div className="max-w-lg mx-auto mt-10 p-6 bg-white shadow-lg rounded-lg">
+      <h2 className="text-2xl font-bold mb-4">Admission Form</h2>
+
+      <form onSubmit={handleSubmit} className="space-y-4">
+        <label className="block font-medium">
+          Select University
+          <select
+            name="university"
+            value={formData.university}
+            onChange={handleChange}
+            className="w-full mt-1 p-2 border rounded-lg"
+            required
+          >
+            <option value="">Choose a university</option>
+            {universities.map((uni, index) => (
+              <option key={index} value={uni}>
+                {uni}
+              </option>
+            ))}
+          </select>
+        </label>
+
+        <input
+          type="text"
+          name="candidateName"
+          value={formData.candidateName}
+          onChange={handleChange}
+          placeholder="Candidate Name"
+          className="w-full p-2 border rounded-lg"
+          required
+        />
+        <input
+          type="text"
+          name="subject"
+          value={formData.subject}
+          onChange={handleChange}
+          placeholder="Subject"
+          className="w-full p-2 border rounded-lg"
+          required
+        />
+        <input
+          type="email"
+          name="email"
+          value={formData.email}
+          onChange={handleChange}
+          placeholder="Candidate Email"
+          className="w-full p-2 border rounded-lg"
+          required
+        />
+        <input
+          type="tel"
+          name="phone"
+          value={formData.phone}
+          onChange={handleChange}
+          placeholder="Candidate Phone Number"
+          className="w-full p-2 border rounded-lg"
+          required
+        />
+        <input
+          type="text"
+          name="address"
+          value={formData.address}
+          onChange={handleChange}
+          placeholder="Address"
+          className="w-full p-2 border rounded-lg"
+          required
+        />
+        <input
+          type="date"
+          name="dob"
+          value={formData.dob}
+          onChange={handleChange}
+          className="w-full p-2 border rounded-lg"
+          required
+        />
+
+        <label className="block font-medium">
+          Upload Profile Picture (Max 200KB, JPG/PNG)
+          <input
+            type="file"
+            accept="image/*"
+            onChange={handleImageChange}
+            className="w-full p-2 border rounded-lg"
           />
-          <h1 className="text-3xl font-bold mt-4">{data?.name}</h1>
-          <p className="text-gray-600 mt-2">
-            <span className="font-semibold badge ">Types: {"Private University"} </span>
-          </p>
-          <div
-            className={`${
-              active ? "bg-info" : "bg-red-400"
-            } mt-4 p-4 rounded-md`}
-          >
-            <p className="text-sm font-medium">
-              <i className="fas fa-shield-alt mr-2 text-white">
-                {active ? "Admisson on going" : "Closed"}
-              </i>
-            </p>
-          </div>
-          <p
-            className={`${
-              dark ? "text-gray-200" : "text-gray-800"
-            } mt-4 text-justify`}
-          >
-            {data?.descriptions}
-          </p>
-          <img
-            src={data?.images[1]}
-            alt="Fundraiser"
-            className="rounded-lg shadow-md w-full h-[400px] object-cover"
-          />
-        </div>
-            
-        {/* Right Section */}
-        <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md">
-          <h3 className="mt-6 text-lg font-semibold">Admission Requirment</h3>
-          <ul className="mt-4 space-y-2">
-            <li className="flex justify-between">
-              <p className="font-medium">Applications Fees</p>
-              <p className="text-gray-500">
-                {data?.admission_process?.fees?.application_fee}
-              </p>
-            </li>
+        </label>
 
-            <li className="flex justify-between">
-              <p className="font-medium">Semister Fees</p>
-              <p className="text-gray-500">
-                {data?.admission_process?.fees?.semester_fee}
-              </p>
-            </li>
-
-            <li className="flex justify-between">
-              <p className="font-medium">Admission Process</p>
-              <div className="flex flex-col">
-                <p className="text-gray-500 text-right">
-                  {data?.admission_process?.requirements?.map((req, index) => (
-                    <p key={index} className="text-gray-700">
-                      {req}
-                    </p>
-                  ))}
-                </p>
-              </div>
-            </li>
-
-            <h3 className="mt-6 text-lg font-semibold">Events</h3>
-
-            <p
-            className={`${
-              dark ? "text-gray-200" : "text-gray-800"
-            } mt-4 text-justify`}
-          >
-            {data?.events?.descriptions}
-          </p>
-
-            <li className="flex justify-between">
-              <p className="font-medium">Academic</p>
-              <div className="flex flex-col">
-                <p className="text-gray-500 text-right">
-                  {data?.events?.academic?.map((event, index) => (
-                    <p key={index} className="text-gray-700">
-                      {event}
-                    </p>
-                  ))}
-                </p>
-              </div>
-            </li>
-
-            <li className="flex justify-between">
-              <p className="font-medium">cultural</p>
-              <div className="flex flex-col">
-                <p className="text-gray-500 text-right">
-                  {data?.events?.cultural?.map((event, index) => (
-                    <p key={index} className="text-gray-700">
-                      {event}
-                    </p>
-                  ))}
-                </p>
-              </div>
-            </li>
-
-            <li className="flex justify-between">
-              <p className="font-medium">technical</p>
-              <div className="flex flex-col">
-                <p className="text-gray-500 text-right">
-                  {data?.events?.technical?.map((event, index) => (
-                    <p key={index} className="text-gray-700">
-                      {event}
-                    </p>
-                  ))}
-                </p>
-              </div>
-            </li>
-
-            <h3 className="mt-6 text-lg font-semibold">Research Works</h3>
-            <li className="flex justify-between">
-              <p className="font-medium">Title</p>
-              <p className="text-gray-500">
-                {data?.research_works[0]?.title}
-              </p>
-            </li>
-            <li className="flex justify-between">
-              <p className="font-medium">Department</p>
-              <p className="text-gray-500">
-                {data?.research_works[0]?.department}
-              </p>
-            </li>
-            <li className="flex justify-between">
-              <p className="font-medium">Publication Link</p>
-              <a href={data?.research_works[0]?.publication_link} className="btn btn-sm ">
-                Read Article
-              </a>
-            </li>
-
-
-            <h3 className="mt-6 text-lg font-semibold">Sports Categories</h3>
-            <li className="flex justify-between">
-              <p className="font-medium">Facilities</p>
-              <div className="flex flex-col">
-                <p className="text-gray-500 text-right">
-                  {data?.sports?.facilities?.map((facility, index) => (
-                    <p key={index} className="text-gray-700">
-                      {facility}
-                    </p>
-                  ))}
-                </p>
-              </div>
-            </li>
-            <li className="flex justify-between">
-              <p className="font-medium">Teams</p>
-              <div className="flex flex-col">
-                <p className="text-gray-500 text-right">
-                  {data?.sports?.teams?.map((facility, index) => (
-                    <p key={index} className="text-gray-700">
-                      {facility}
-                    </p>
-                  ))}
-                </p>
-              </div>
-            </li>
-
-          </ul>
-        </div>
-      </div>
-      <Helmet>
-        <meta charSet="utf-8" />
-        <title>Donations Details</title>
-      </Helmet>
-    </>
+        <button
+          type="submit"
+          className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
+        >
+          Submit
+        </button>
+      </form>
+    </div>
   );
 };
 
-export default Details;
+export default Admission;
