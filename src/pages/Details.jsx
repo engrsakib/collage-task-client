@@ -224,7 +224,19 @@ const Details = () => {
                 </p>
               </div>
             </li>
-            
+            <li className="flex justify-between">
+              <p className="font-medium">Teams</p>
+              <div className="flex flex-col">
+                <p className="text-gray-500 text-right">
+                  {data?.sports?.teams?.map((facility, index) => (
+                    <p key={index} className="text-gray-700">
+                      {facility}
+                    </p>
+                  ))}
+                </p>
+              </div>
+            </li>
+
           </ul>
         </div>
       </div>
