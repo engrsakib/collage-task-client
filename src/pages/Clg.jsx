@@ -58,6 +58,7 @@ const Clg = ({ clg }) => {
           </p>
         </div>
         <Link
+          to={`/colleges/${id}`}
           className={`inline-block bg-blue-600 text-white px-4 py-2 rounded-lg shadow hover:bg-blue-700 ${
             !users?.email && "hidden"
           }`}

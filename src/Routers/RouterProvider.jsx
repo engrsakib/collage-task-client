@@ -10,6 +10,7 @@ import Dashboard from "../components/Dashboard/Dashboard";
 import User from "../components/Dashboard/user/User";
 import UserEdit from "../components/Dashboard/user/UserEdit";
 import Collage from "../pages/Collage";
+import Details from "../pages/Details";
 
 
 const router = createBrowserRouter([
@@ -27,8 +28,8 @@ const router = createBrowserRouter([
         element:  <Collage></Collage> ,
       },
       {
-        path: "/edit-Task",
-        element: <Privete> </Privete>,
+        path: "/colleges/:id",
+        element: <Privete> <Details></Details> </Privete>,
       },
       
     ],
