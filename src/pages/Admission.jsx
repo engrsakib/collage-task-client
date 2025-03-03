@@ -1,10 +1,14 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import axios from "axios";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
+import { AuthContext } from "../provider/AuthProvider";
+import useGetAllUsers from "../components/Dashboard/user/AllUsers/useGetAllUsers";
 
 const Admission = () => {
+    const { dark, setActive, user } = useContext(AuthContext);
+    const { users } = useGetAllUsers(user);
     const navigate = useNavigate();
   const universities = [
     "East West University",
@@ -18,9 +22,9 @@ const Admission = () => {
   ];
 
   const [formData, setFormData] = useState({
-    candidateName: "",
+    candidateName: users.name,
     subject: "",
-    email: "",
+    email: users.email,
     phone: "",
     address: "",
     dob: "",
@@ -157,7 +161,7 @@ const Admission = () => {
           onChange={handleChange}
           placeholder="Candidate Email"
           className="w-full p-2 border rounded-lg"
-          required
+          readOnly
         />
         <input
           type="tel"
