@@ -9,6 +9,7 @@ import Privete from "./Privete";
 import Dashboard from "../components/Dashboard/Dashboard";
 import User from "../components/Dashboard/user/User";
 import UserEdit from "../components/Dashboard/user/UserEdit";
+import Collage from "../pages/Collage";
 
 
 const router = createBrowserRouter([
@@ -19,11 +20,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <Privete><Home></Home></Privete>,
+        element: <Home></Home>,
       },
       {
-        path: "/add-Task",
-        element: <Privete> </Privete>,
+        path: "/colleges",
+        element:  <Collage></Collage> ,
       },
       {
         path: "/edit-Task",
