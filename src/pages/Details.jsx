@@ -37,7 +37,7 @@ const Details = () => {
     return <Loading></Loading>;
   }
 
-  console.log(data);
+//   console.log(data);
   const {
     _id,
     name,

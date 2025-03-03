@@ -15,7 +15,7 @@ const Home = () => {
         <div className='container mt-20 lg:mt-36'>
           
           {/* University Card for home pages */}
-          <div>
+          <div className=''>
             <HomeUniversity />
           </div>
           {/* image galery */}

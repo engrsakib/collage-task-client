@@ -11,6 +11,7 @@ import User from "../components/Dashboard/user/User";
 import UserEdit from "../components/Dashboard/user/UserEdit";
 import Collage from "../pages/Collage";
 import Details from "../pages/Details";
+import Admission from "../pages/Admission";
 
 
 const router = createBrowserRouter([
@@ -30,6 +31,10 @@ const router = createBrowserRouter([
       {
         path: "/colleges/:id",
         element: <Privete> <Details></Details> </Privete>,
+      },
+      {
+        path: "/admission",
+        element: <Privete> <Admission></Admission> </Privete>,
       },
       
     ],
