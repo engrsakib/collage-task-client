@@ -7,6 +7,7 @@ import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loading from "../components/Loading";
 import useGetAdmitionUser from "../components/Dashboard/user/AllUsers/useGetAdmitionUser";
+import WriteFeadBack from "./WriteFeadBack";
 
 const MyCollageDetails = () => {
   const { dark, setActive, active } = useContext(AuthContext);
@@ -19,7 +20,7 @@ const MyCollageDetails = () => {
   const {
     university} = admitedUser;
 
-    console.log(university)
+    // console.log(university)
   const {
     isLoading: isPendings,
     data: data = {},
@@ -246,6 +247,9 @@ const MyCollageDetails = () => {
             </li>
           </ul>
         </div>
+      </div>
+      <div>
+        <WriteFeadBack></WriteFeadBack>
       </div>
       <Helmet>
         <meta charSet="utf-8" />
