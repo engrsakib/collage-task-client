@@ -209,6 +209,22 @@ const Details = () => {
                 Read Article
               </a>
             </li>
+
+
+            <h3 className="mt-6 text-lg font-semibold">Sports Categories</h3>
+            <li className="flex justify-between">
+              <p className="font-medium">Facilities</p>
+              <div className="flex flex-col">
+                <p className="text-gray-500 text-right">
+                  {data?.sports?.facilities?.map((facility, index) => (
+                    <p key={index} className="text-gray-700">
+                      {facility}
+                    </p>
+                  ))}
+                </p>
+              </div>
+            </li>
+            
           </ul>
         </div>
       </div>
