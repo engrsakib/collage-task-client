@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet';
 import { AuthContext } from '../provider/AuthProvider'
 import CollageGallery from '../components/HomeComponents/CollageGalery';
 import HomeUniversity from '../components/HomeComponents/HomeUniversity';
+import Feedback from './Feedback';
 
 
 
@@ -21,6 +22,11 @@ const Home = () => {
           {/* image galery */}
           <div>
             <CollageGallery />
+          </div>
+
+          <div>
+            <h1 className='text-3xl font-bold text-center mb-6'>Candidate FeedBack</h1>
+            <Feedback></Feedback>
           </div>
         </div>
 
