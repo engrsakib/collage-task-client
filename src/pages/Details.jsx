@@ -5,6 +5,7 @@ import { Helmet } from "react-helmet";
 import { AuthContext } from "../provider/AuthProvider";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
+import Loading from "../components/Loading";
 
 const Details = () => {
   const { dark, setActive, active } = useContext(AuthContext);
@@ -15,7 +16,7 @@ const Details = () => {
 
   const {
     isLoading: isPending,
-    data: data = [],
+    data: data = {},
     refetch,
   } = useQuery({
     queryKey: ["collage-details"],
@@ -31,6 +32,10 @@ const Details = () => {
       }
     },
   });
+
+  if (isPending) {
+    return <Loading></Loading>;
+  }
 
   console.log(data);
   const {
@@ -102,42 +107,19 @@ const Details = () => {
 
         {/* Right Section */}
         <div className="w-full lg:w-1/3 bg-white p-6 rounded-lg shadow-md">
-          <p className="text-gray-600">
-            Name: {name} <br /> Mail: {mail}
-          </p>
-          <div className="my-4">
-            <div className="relative h-4 w-full bg-gray-200 rounded-full">
-              <div
-                className="absolute top-0 left-0 h-4 bg-yellow-500 rounded-full"
-                style={{ width: "74%" }}
-              ></div>
-            </div>
-            <p className="text-sm text-gray-500 mt-1">74%</p>
-          </div>
-
-          <button
-            onClick={() => {
-              handleDonate(_id);
-            }}
-            className="btn btn-primary w-full my-2"
-          >
-            Donate Now
-          </button>
-
-          <h3 className="mt-6 text-lg font-semibold">Other Informations</h3>
+          <h3 className="mt-6 text-lg font-semibold">Admission Requirment</h3>
           <ul className="mt-4 space-y-2">
             <li className="flex justify-between">
-              <p className="font-medium">Minimum Donations Amount</p>
-              <p className="text-gray-500">{minimumMoney} TK</p>
+              <p className="font-medium">Applications Fees</p>
+              <p className="text-gray-500">{data?.admission_process?.fees?.application_fee
+              }</p>
             </li>
-            {/* <li className="flex justify-between">
-              <p className="font-medium">Davinder Sapra</p>
-              <p className="text-gray-500">$5,000</p>
-            </li>
+
             <li className="flex justify-between">
-              <p className="font-medium">Anonymous</p>
-              <p className="text-gray-500">$500</p>
-            </li> */}
+              <p className="font-medium">Semister Fees</p>
+              <p className="text-gray-500">{data?.admission_process?.fees?.semester_fee
+              }</p>
+            </li>
           </ul>
         </div>
       </div>
