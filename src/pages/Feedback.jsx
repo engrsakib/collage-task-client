@@ -46,7 +46,7 @@ const Feedback = () => {
     <div
       className={`${
         dark ? "" : ""
-      } py-10 px-4 min-h-screen`}
+      } py-10 px-4`}
     >
       <div className="max-w-screen-xl mx-auto">
         <h2

@@ -1,0 +1,326 @@
+[
+    {
+      "university": "Independent University, Bangladesh",
+      "research_papers": [
+        {
+          "topic": "Climate Change Adaptation",
+          "writer": "Dr. Rafiqul Islam",
+          "journal": "Environmental Research Journal",
+          "published_date": "2023-11-18",
+          "photoUrl": "https://example.com/climate_change.jpg",
+          "link": "https://example.com/research/climate-change"
+        },
+        {
+          "topic": "Big Data Analytics",
+          "writer": "Prof. Farzana Yasmin",
+          "journal": "Journal of Data Science",
+          "published_date": "2024-01-29",
+          "photoUrl": "https://example.com/big_data.jpg",
+          "link": "https://example.com/research/big-data"
+        },
+        {
+          "topic": "AI-Powered Decision Making",
+          "writer": "Dr. Ayesha Sultana",
+          "journal": "Artificial Intelligence Review",
+          "published_date": "2023-08-20",
+          "photoUrl": "https://example.com/ai_decision.jpg",
+          "link": "https://example.com/research/ai-decision"
+        },
+        {
+          "topic": "Cybersecurity for IoT Devices",
+          "writer": "Dr. Mahmud Hasan",
+          "journal": "IoT Security Journal",
+          "published_date": "2024-02-18",
+          "photoUrl": "https://example.com/iot_security.jpg",
+          "link": "https://example.com/research/iot-security"
+        },
+        {
+          "topic": "Green Energy Innovations",
+          "writer": "Prof. Naila Rahman",
+          "journal": "Sustainable Energy Journal",
+          "published_date": "2023-12-05",
+          "photoUrl": "https://example.com/green_energy.jpg",
+          "link": "https://example.com/research/green-energy"
+        },
+        {
+          "topic": "Autonomous Vehicles and AI",
+          "writer": "Dr. Imran Hossain",
+          "journal": "Transportation AI Journal",
+          "published_date": "2024-03-10",
+          "photoUrl": "https://example.com/autonomous_ai.jpg",
+          "link": "https://example.com/research/autonomous-ai"
+        }
+      ]
+    },
+    {
+      "university": "BRAC University",
+      "research_papers": [
+        {
+          "topic": "IoT in Smart Cities",
+          "writer": "Dr. Tamim Hasan",
+          "journal": "Smart City Research",
+          "published_date": "2023-10-05",
+          "photoUrl": "https://example.com/iot_smart_cities.jpg",
+          "link": "https://example.com/research/iot-smart-cities"
+        },
+        {
+          "topic": "Ethical AI Development",
+          "writer": "Dr. Sabina Alam",
+          "journal": "Ethics and AI Journal",
+          "published_date": "2022-09-14",
+          "photoUrl": "https://example.com/ethical_ai.jpg",
+          "link": "https://example.com/research/ethical-ai"
+        },
+        {
+          "topic": "Digital Banking Security",
+          "writer": "Prof. Kazi Rahmat",
+          "journal": "Financial Technology Journal",
+          "published_date": "2023-06-15",
+          "photoUrl": "https://example.com/digital_banking.jpg",
+          "link": "https://example.com/research/digital-banking"
+        },
+        {
+          "topic": "Renewable Energy Storage",
+          "writer": "Dr. Samina Hossain",
+          "journal": "Energy Storage Journal",
+          "published_date": "2024-01-25",
+          "photoUrl": "https://example.com/renewable_storage.jpg",
+          "link": "https://example.com/research/renewable-storage"
+        },
+        {
+          "topic": "Blockchain for Supply Chain",
+          "writer": "Dr. Masud Karim",
+          "journal": "Blockchain Applications Journal",
+          "published_date": "2023-07-12",
+          "photoUrl": "https://example.com/blockchain_supply.jpg",
+          "link": "https://example.com/research/blockchain-supply"
+        },
+        {
+          "topic": "Artificial Neural Networks",
+          "writer": "Dr. Sumon Chowdhury",
+          "journal": "AI & Data Science Journal",
+          "published_date": "2023-11-03",
+          "photoUrl": "https://example.com/neural_networks.jpg",
+          "link": "https://example.com/research/neural-networks"
+        }
+      ]
+    },
+    {
+      "university": "North South University",
+      "research_papers": [
+        {
+          "topic": "Quantum Computing and Cryptography",
+          "writer": "Dr. Anwar Hossain",
+          "journal": "Quantum Computing Journal",
+          "published_date": "2023-06-30",
+          "photoUrl": "https://example.com/quantum_computing.jpg",
+          "link": "https://example.com/research/quantum-computing"
+        },
+        {
+          "topic": "5G and Future of Connectivity",
+          "writer": "Prof. Javed Karim",
+          "journal": "Telecom Innovations",
+          "published_date": "2024-02-01",
+          "photoUrl": "https://example.com/5g_future.jpg",
+          "link": "https://example.com/research/5g-future"
+        },
+        {
+          "topic": "AI-Driven Business Analytics",
+          "writer": "Dr. Fahim Rahman",
+          "journal": "Business Analytics Journal",
+          "published_date": "2023-09-28",
+          "photoUrl": "https://example.com/ai_business.jpg",
+          "link": "https://example.com/research/ai-business"
+        },
+        {
+          "topic": "Cybersecurity Risk Management",
+          "writer": "Dr. Nasrin Akter",
+          "journal": "Cybersecurity Journal",
+          "published_date": "2024-01-10",
+          "photoUrl": "https://example.com/cybersecurity_risk.jpg",
+          "link": "https://example.com/research/cybersecurity-risk"
+        },
+        {
+          "topic": "Smart Agriculture and IoT",
+          "writer": "Prof. Akbar Hossain",
+          "journal": "Agricultural Tech Journal",
+          "published_date": "2023-08-15",
+          "photoUrl": "https://example.com/smart_agriculture.jpg",
+          "link": "https://example.com/research/smart-agriculture"
+        },
+        {
+          "topic": "Human-Computer Interaction",
+          "writer": "Dr. Lina Parvin",
+          "journal": "HCI and UX Journal",
+          "published_date": "2023-12-20",
+          "photoUrl": "https://example.com/hci_ux.jpg",
+          "link": "https://example.com/research/hci-ux"
+        }
+      ]
+    },
+    {
+        "university": "University of Liberal Arts Bangladesh",
+        "research_papers": [
+          {
+            "topic": "Impact of Social Media on Youth",
+            "writer": "Dr. Mahfuz Rahman",
+            "journal": "Journal of Media Studies",
+            "published_date": "2023-09-10",
+            "photoUrl": "https://example.com/social_media_impact.jpg",
+            "link": "https://example.com/research/social-media-impact"
+          },
+          {
+            "topic": "E-learning and Remote Education",
+            "writer": "Dr. Ayesha Karim",
+            "journal": "Education and Learning Journal",
+            "published_date": "2022-06-25",
+            "photoUrl": "https://example.com/e_learning.jpg",
+            "link": "https://example.com/research/e-learning"
+          },
+          {
+            "topic": "Digital Marketing Trends",
+            "writer": "Prof. Samin Haque",
+            "journal": "Marketing Insights",
+            "published_date": "2023-05-15",
+            "photoUrl": "https://example.com/digital_marketing.jpg",
+            "link": "https://example.com/research/digital-marketing"
+          },
+          {
+            "topic": "Artificial Intelligence in Journalism",
+            "writer": "Dr. Taslima Ferdous",
+            "journal": "AI & Media Journal",
+            "published_date": "2024-01-20",
+            "photoUrl": "https://example.com/ai_journalism.jpg",
+            "link": "https://example.com/research/ai-journalism"
+          },
+          {
+            "topic": "Media Ethics in the Digital Age",
+            "writer": "Dr. Rashed Islam",
+            "journal": "Ethics and Media Research",
+            "published_date": "2023-08-10",
+            "photoUrl": "https://example.com/media_ethics.jpg",
+            "link": "https://example.com/research/media-ethics"
+          },
+          {
+            "topic": "Content Creation Strategies",
+            "writer": "Prof. Mahmudul Karim",
+            "journal": "Journal of Creative Content",
+            "published_date": "2024-02-18",
+            "photoUrl": "https://example.com/content_creation.jpg",
+            "link": "https://example.com/research/content-creation"
+          }
+        ]
+      },
+      {
+        "university": "Dhaka International University",
+        "research_papers": [
+          {
+            "topic": "Mental Health Awareness",
+            "writer": "Prof. Sultana Jahan",
+            "journal": "Psychology and Wellbeing",
+            "published_date": "2023-08-15",
+            "photoUrl": "https://example.com/mental_health.jpg",
+            "link": "https://example.com/research/mental-health"
+          },
+          {
+            "topic": "Green Architecture",
+            "writer": "Dr. Asif Chowdhury",
+            "journal": "Journal of Sustainable Design",
+            "published_date": "2024-02-12",
+            "photoUrl": "https://example.com/green_architecture.jpg",
+            "link": "https://example.com/research/green-architecture"
+          },
+          {
+            "topic": "Urban Planning for Smart Cities",
+            "writer": "Dr. Zahir Uddin",
+            "journal": "Urban Development Review",
+            "published_date": "2023-11-22",
+            "photoUrl": "https://example.com/urban_planning.jpg",
+            "link": "https://example.com/research/urban-planning"
+          },
+          {
+            "topic": "Sustainable Energy in Bangladesh",
+            "writer": "Prof. Anisur Rahman",
+            "journal": "Energy and Sustainability Journal",
+            "published_date": "2024-01-10",
+            "photoUrl": "https://example.com/sustainable_energy.jpg",
+            "link": "https://example.com/research/sustainable-energy"
+          },
+          {
+            "topic": "Noise Pollution and Urban Life",
+            "writer": "Dr. Farhana Yasmin",
+            "journal": "Environmental Research",
+            "published_date": "2023-12-05",
+            "photoUrl": "https://example.com/noise_pollution.jpg",
+            "link": "https://example.com/research/noise-pollution"
+          },
+          {
+            "topic": "Smart Healthcare Systems",
+            "writer": "Dr. Jahidul Hasan",
+            "journal": "Health Informatics Journal",
+            "published_date": "2024-03-01",
+            "photoUrl": "https://example.com/smart_healthcare.jpg",
+            "link": "https://example.com/research/smart-healthcare"
+          }
+        ]
+      },
+      {
+        "university": "American International University-Bangladesh",
+        "research_papers": [
+          {
+            "topic": "Machine Learning in Finance",
+            "writer": "Dr. Mizanur Rahman",
+            "journal": "AI and Finance Journal",
+            "published_date": "2023-03-22",
+            "photoUrl": "https://example.com/ml_finance.jpg",
+            "link": "https://example.com/research/ml-finance"
+          },
+          {
+            "topic": "Data Privacy in the Digital Era",
+            "writer": "Prof. Nadia Akter",
+            "journal": "Journal of Data Protection",
+            "published_date": "2022-12-30",
+            "photoUrl": "https://example.com/data_privacy.jpg",
+            "link": "https://example.com/research/data-privacy"
+          },
+          {
+            "topic": "Artificial Intelligence Ethics",
+            "writer": "Dr. Arif Hossain",
+            "journal": "AI Ethics Journal",
+            "published_date": "2023-10-12",
+            "photoUrl": "https://example.com/ai_ethics.jpg",
+            "link": "https://example.com/research/ai-ethics"
+          },
+          {
+            "topic": "Deep Learning for Image Recognition",
+            "writer": "Prof. Sakib Rahman",
+            "journal": "Deep Learning Journal",
+            "published_date": "2024-01-05",
+            "photoUrl": "https://example.com/deep_learning.jpg",
+            "link": "https://example.com/research/deep-learning"
+          },
+          {
+            "topic": "Edge Computing and IoT",
+            "writer": "Dr. Hasan Mahmud",
+            "journal": "IoT and Cloud Computing",
+            "published_date": "2023-07-08",
+            "photoUrl": "https://example.com/edge_computing.jpg",
+            "link": "https://example.com/research/edge-computing"
+          },
+          {
+            "topic": "Human-Computer Interaction Trends",
+            "writer": "Prof. Tania Zaman",
+            "journal": "HCI Research Journal",
+            "published_date": "2024-02-18",
+            "photoUrl": "https://example.com/hci_trends.jpg",
+            "link": "https://example.com/research/hci-trends"
+          }
+        ]
+      }
+  ]
+
+  
+  
+    
+  
+  
