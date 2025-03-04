@@ -3,9 +3,12 @@ import axios from "axios";
 import React, { useState, useEffect, useContext } from "react";
 import Loading from "../components/Loading";
 import { AuthContext } from "../provider/AuthProvider";
+import useGetAllUsers from "../components/Dashboard/user/AllUsers/useGetAllUsers";
 
 const Feedback = () => {
   const { user, dark } = useContext(AuthContext);
+  const { users,  } = useGetAllUsers(user);  
+
 
   const {
     isLoading: isPending,

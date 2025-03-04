@@ -4,13 +4,14 @@ import { AuthContext } from '../provider/AuthProvider'
 import CollageGallery from '../components/HomeComponents/CollageGalery';
 import HomeUniversity from '../components/HomeComponents/HomeUniversity';
 import Feedback from './Feedback';
+import useGetAllUsers from '../components/Dashboard/user/AllUsers/useGetAllUsers';
 
 
 
 const Home = () => {
   const{user, loadding, dark} = useContext(AuthContext);
+  const { users, refetch, isPending } = useGetAllUsers(user);
   
-
     return (
       <>
         <div className='container mt-20 lg:mt-36'>
@@ -24,8 +25,8 @@ const Home = () => {
             <CollageGallery />
           </div>
 
-          <div>
-            <h1 className='text-3xl font-bold text-center mb-6'>Candidate FeedBack</h1>
+          <div className={`${!users.email && "hidden"}`}>
+            <h1 className={`text-3xl font-bold text-center mb-6`}>Candidate FeedBack</h1>
             <Feedback></Feedback>
           </div>
         </div>
