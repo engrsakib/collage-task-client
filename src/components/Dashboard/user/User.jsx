@@ -102,7 +102,7 @@ const User = () => {
               </div>
               <div>
                 <p className="text-sm text-gray-500">University</p>
-                <p className="font-medium">{admitedUser?.university || "N/A"}</p>
+                <p className="font-medium">{users?.university || "N/A"}</p>
               </div>
             </div>
             <div className="mt-6">

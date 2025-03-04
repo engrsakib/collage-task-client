@@ -314,13 +314,13 @@ const UserEdit = () => {
 
   // Form state
   const [formData, setFormData] = useState({
-    name: users.name,
-    photoUrl: users.photoUrl,
-    gender: users.gender || "",
-    district: users.district || "",
-    upazila: users.upazila || "",
-    email: users.email || "",
-    university: admitedUser.university || "",
+    name: users?.name,
+    photoUrl: users?.photoUrl,
+    gender: users?.gender || "",
+    district: users?.district || "",
+    upazila: users?.upazila || "",
+    email: users?.email || "",
+    university: users?.university || "",
   });
 
   const handleChange = (e) => {

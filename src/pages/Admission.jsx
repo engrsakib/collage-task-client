@@ -99,6 +99,12 @@ const Admission = () => {
       if (response) {
         Swal.fire("Success", "Admission form submitted successfully!", "success");
         navigate("/my-college");
+
+        const response = await axios.put(`http://localhost:5000/users/role/${users?._id}`, {
+          university: formData.university,
+        });
+
+
         setFormData({
           candidateName: "",
           subject: "",

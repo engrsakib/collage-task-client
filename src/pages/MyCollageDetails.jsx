@@ -16,7 +16,9 @@ const MyCollageDetails = () => {
   const { users } = useGetAllUsers(user);
   const { admitedUser, isPending } = useGetAdmitionUser();
   
-  const { university } = admitedUser;
+  const { university } = users;
+
+  
 
   const {
     isLoading: isPendings,
@@ -59,6 +61,7 @@ const MyCollageDetails = () => {
       </div>
     );
   }
+
 
   return (
     <>
