@@ -25,7 +25,7 @@ const ResearchWorks = () => {
 
   return (
     <div className={`min-h-screen py-10 px-5 `}>
-      <h2 className="text-center text-3xl font-bold mb-6">Research Works</h2>
+      
       {research.map((uni, index) => (
         <div key={index} className="mb-10">
           <h3 className="text-2xl font-semibold mb-4 text-center border-b pb-2">{uni.university}</h3>
