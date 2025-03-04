@@ -10,7 +10,8 @@ AcadEase is a **MERN stack-based** college booking platform where users can sear
 ## 📂 Repositories  
 - **Frontend:** [GitHub - Client](https://github.com/engrsakib/collage-task-client)  
 - **Backend:** [GitHub - Server](https://github.com/engrsakib/collage-task-server)  
-
+- **Website:** [Md. Nazmus Sakib](https://www.engrsakib.com/)  
+- **Contact:** info@engrsakib.com 
 ---
 
 ## ✨ Features  
