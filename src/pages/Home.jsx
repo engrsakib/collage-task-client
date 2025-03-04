@@ -5,6 +5,7 @@ import CollageGallery from '../components/HomeComponents/CollageGalery';
 import HomeUniversity from '../components/HomeComponents/HomeUniversity';
 import Feedback from './Feedback';
 import useGetAllUsers from '../components/Dashboard/user/AllUsers/useGetAllUsers';
+import ReacerchWorks from '../components/HomeComponents/ReacerchWorks';
 
 
 
@@ -25,11 +26,26 @@ const Home = () => {
             <CollageGallery />
           </div>
 
+
+          {/* feedback works */}
           <div className={`${!users.email && "hidden"}`}>
             <h1 className={`text-3xl font-bold text-center mb-6`}>Candidate FeedBack</h1>
             <Feedback></Feedback>
           </div>
+
+          {/* feedback works */}
+          <div className={`${!users.email && "hidden"}`}>
+            <h1 className={`text-3xl font-bold text-center mb-6`}>Reacerchs Works</h1>
+            <ReacerchWorks></ReacerchWorks>
+          </div>
+
+
+
+
+
         </div>
+
+
 
         <Helmet>
           <meta charSet="utf-8" />
