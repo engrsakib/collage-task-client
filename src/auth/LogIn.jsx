@@ -130,10 +130,11 @@ const LogIn = () => {
                     className="checkbox checkbox-primary"
                     checked={formData.remember}
                     onChange={handleChange}
+                    required
                   />
                   <span>Remember Me</span>
                 </label>
-                <a href="#" className="text-sm text-blue-500 hover:underline">
+                <a href="/auth/reset-password" className="text-sm text-blue-500 hover:underline">
                   Forgot Password?
                 </a>
               </div>

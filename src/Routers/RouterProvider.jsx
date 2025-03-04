@@ -13,6 +13,7 @@ import Collage from "../pages/Collage";
 import Details from "../pages/Details";
 import Admission from "../pages/Admission";
 import MyCollege from "../pages/MyCollege";
+import ForgottenPassword from "../auth/ForgottenPassword";
 
 
 const router = createBrowserRouter([
@@ -87,6 +88,14 @@ const router = createBrowserRouter([
     element: (
       <Public>
         <Register></Register>
+      </Public>
+    ),
+  },
+  {
+    path: "/auth/reset-password",
+    element: (
+      <Public>
+        <ForgottenPassword></ForgottenPassword>
       </Public>
     ),
   },
