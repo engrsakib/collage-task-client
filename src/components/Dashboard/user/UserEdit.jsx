@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import useGetAllUsers from "./AllUsers/useGetAllUsers";
 import Loading from "../../Loading";
+import useGetAdmitionUser from "./AllUsers/useGetAdmitionUser";
 
 const districtData = {
   Magura: ["Magura Sadar", "Shalikha", "Sreepur", "Mohammadpur"],
@@ -288,9 +289,21 @@ const districtData = {
 
 const Gender = ["Male", "Female"];
 
+const universities = [
+  "East West University",
+  "Southeast University",
+  "University of Liberal Arts Bangladesh",
+  "Dhaka International University",
+  "American International University-Bangladesh",
+  "Independent University, Bangladesh",
+  "BRAC University",
+  "North South University",
+];
+
 const UserEdit = () => {
   const { user, dark, setLoadding } = useContext(AuthContext);
   const navigate = useNavigate();
+  const { admitedUser } = useGetAdmitionUser();
 
   const { users, refetch, isPending } = useGetAllUsers(user);
 
@@ -307,7 +320,7 @@ const UserEdit = () => {
     district: users.district || "",
     upazila: users.upazila || "",
     email: users.email || "",
-    university: users.university || "",
+    university: admitedUser.university || "",
   });
 
   const handleChange = (e) => {
@@ -460,17 +473,23 @@ const UserEdit = () => {
             </select>
           </div>
 
-          <div>
-            <label className="block text-sm text-gray-500">University</label>
-            <input
-              type="text"
-              name="university"
-              value={formData.university}
-              onChange={handleChange}
-              className="input input-bordered w-full"
-              readOnly
-            />
-          </div>
+          <label className="block font-medium">
+          Select University
+          <select
+            name="university"
+            value={formData.university}
+            onChange={handleChange}
+            className="w-full mt-1 p-2 border rounded-lg"
+            required
+          >
+            <option value="">Choose a university</option>
+            {universities.map((uni, index) => (
+              <option key={index} value={uni}>
+                {uni}
+              </option>
+            ))}
+          </select>
+        </label>
 
           <div className="sm:col-span-2 flex justify-end">
             <button type="submit" className="btn btn-primary">

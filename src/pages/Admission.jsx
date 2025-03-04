@@ -5,10 +5,11 @@ import { Helmet } from "react-helmet";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import useGetAllUsers from "../components/Dashboard/user/AllUsers/useGetAllUsers";
+import Loading from "../components/Loading";
 
 const Admission = () => {
     const { dark, setActive, user } = useContext(AuthContext);
-    const { users } = useGetAllUsers(user);
+    const { users, isPending } = useGetAllUsers(user);
     const navigate = useNavigate();
   const universities = [
     "East West University",
@@ -20,6 +21,10 @@ const Admission = () => {
     "BRAC University",
     "North South University",
   ];
+
+  if(isPending){
+    return <Loading></Loading>
+  }
 
   const [formData, setFormData] = useState({
     candidateName: users.name,
@@ -109,6 +114,8 @@ const Admission = () => {
       console.error(error);
     }
   };
+
+  console.log(users)
 
   return (
     <>
