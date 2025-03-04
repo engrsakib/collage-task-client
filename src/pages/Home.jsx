@@ -16,10 +16,10 @@ const Home = () => {
   
     return (
       <>
-        <div className='container mt-20 lg:mt-36'>
+        <div className='container mt-20 lg:mt-26'>
 
           {/* search implementions */}
-          <div>
+          <div className='w-full'>
             <Search></Search>
           </div>
           

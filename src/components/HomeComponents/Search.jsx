@@ -34,29 +34,31 @@ const Search = () => {
   });
 
   return (
-    <div className="w-full flex justify-center items-center p-4">
-      <div className="relative w-full max-w-2xl">
-        <input
-          type="text"
-          placeholder="Search university..."
-          value={search}
-          onChange={(e) => setSearch(e?.target?.value)}
-          className="w-full p-4 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 input input-success"
-        />
-        {search && results?.length > 0 && (
-          <ul className="absolute w-full bg-white border border-gray-300 mt-2 rounded-md shadow-lg max-h-60 overflow-y-auto">
-            {isLoadingSearch ? (
-              <Loading />
-            ) : (
-              results?.map((university) => (
-                <li key={university.id} className="p-3 flex justify-between items-center hover:bg-gray-100 cursor-pointer">
-                  <span>{university.name}</span>
-                  <a href={`/colleges/${university._id}`} className="text-blue-500">Details</a>
-                </li>
-              ))
-            )}
-          </ul>
-        )}
+    <div className="w-full max-h-screen bg-cover bg-center" style={{ backgroundImage: 'url("https://diu.ac/assets/images/slider/s11.jpeg")' }}>
+      <div className="w-full h-full bg-gradient-to-t from-black via-transparent to-transparent flex justify-center items-center p-4">
+        <div className="relative w-full max-w-2xl p-8 bg-white bg-opacity-50 rounded-lg shadow-lg">
+          <input
+            type="text"
+            placeholder="Search university"
+            value={search}
+            onChange={(e) => setSearch(e?.target?.value)}
+            className="w-full p-4 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 input input-success"
+          />
+          {search && results?.length > 0 && (
+            <ul className="absolute w-full bg-white border border-gray-300 mt-2 rounded-md shadow-lg max-h-60 overflow-y-auto">
+              {isLoadingSearch ? (
+                <Loading />
+              ) : (
+                results?.map((university) => (
+                  <li key={university.id} className="p-3 flex justify-between items-center hover:bg-gray-100 cursor-pointer">
+                    <span>{university.name}</span>
+                    <a href={`/colleges/${university._id}`} className="text-blue-500">Details</a>
+                  </li>
+                ))
+              )}
+            </ul>
+          )}
+        </div>
       </div>
     </div>
   );
