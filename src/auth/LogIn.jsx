@@ -65,7 +65,7 @@ const LogIn = () => {
   const emailRef = useRef();
   // reset
   const handleReset = ()=>{
-    const email = emailRef.current.value;
+    
     if(!email){
       Swal.fire("Please write your mail","","error");
     }else{

@@ -49,10 +49,10 @@ const Header = () => {
       <NavLink to="/colleges" className={({ isActive }) => `text-xl ${isActive ? "text-info" : "text-gray-600"}`}>
         Colleges
       </NavLink>
-      <NavLink to="/admission" className={({ isActive }) => `text-xl ${isActive ? "text-info" : "text-gray-600"}`}>
+      <NavLink to="/admission" className={({ isActive }) => `text-xl ${isActive ? "text-info" : "text-gray-600"} ${!users.email && "hidden"}`}>
         Admission
       </NavLink>
-      <NavLink to="/my-college" className={({ isActive }) => `text-xl ${isActive ? "text-info" : "text-gray-600"}`}>
+      <NavLink to="/my-college" className={({ isActive }) => `text-xl ${isActive ? "text-info" : "text-gray-600"} ${!users.email && "hidden"}`}>
         My College
       </NavLink>
     </>
@@ -92,7 +92,7 @@ const Header = () => {
                 </div>
               ) : (
                 <div className="p-2">
-                  <Link to="/dashboard/profile" className="block px-4 py-2 hover:bg-gray-200 rounded">Profile</Link>
+                  <Link to="/dashboard/profile" className="block px-4 py-2 hover:bg-gray-200 rounded text-xs">{users?.name}</Link>
                   <button onClick={handleSignOut} className="block w-full text-left px-4 py-2 hover:bg-gray-200 rounded">Logout</button>
                 </div>
               )}

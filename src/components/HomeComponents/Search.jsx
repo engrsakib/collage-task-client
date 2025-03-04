@@ -45,7 +45,7 @@ const Search = () => {
             className="w-full p-4 text-lg border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500 input input-success"
           />
           {search && results?.length > 0 && (
-            <ul className="absolute w-full bg-white border border-gray-300 mt-2 rounded-md shadow-lg max-h-60 overflow-y-auto">
+            <ul className="absolute w-10/12 md:w-full lg:w-11/12 bg-white border border-gray-300 mt-2 rounded-md shadow-lg max-h-60 overflow-y-auto">
               {isLoadingSearch ? (
                 <Loading />
               ) : (
