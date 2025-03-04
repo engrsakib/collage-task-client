@@ -6,6 +6,7 @@ import HomeUniversity from '../components/HomeComponents/HomeUniversity';
 import Feedback from './Feedback';
 import useGetAllUsers from '../components/Dashboard/user/AllUsers/useGetAllUsers';
 import ReacerchWorks from '../components/HomeComponents/ReacerchWorks';
+import Search from '../components/HomeComponents/Search';
 
 
 
@@ -16,6 +17,11 @@ const Home = () => {
     return (
       <>
         <div className='container mt-20 lg:mt-36'>
+
+          {/* search implementions */}
+          <div>
+            <Search></Search>
+          </div>
           
           {/* University Card for home pages */}
           <div className=''>
