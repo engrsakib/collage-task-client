@@ -5,7 +5,7 @@ import { auth } from "../Firebase/firebase.congig";
 import Swal from "sweetalert2";
 
 const axiosInstance = axios.create({
-  baseURL: "http://localhost:5000",
+  baseURL: "https://collage-server-orcin.vercel.app",
   withCredentials: true,
 });
 

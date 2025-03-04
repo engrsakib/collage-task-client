@@ -10,7 +10,9 @@ const ResearchWorks = () => {
     queryKey: ["collage-home-researchApp"],
     queryFn: async () => {
       try {
-        const response = await axios.get("http://localhost:5000/research");
+        const response = await axios.get(
+          "https://collage-server-orcin.vercel.app/research"
+        );
         return response.data;
       } catch (error) {
         console.error("Error fetching research papers:", error);
@@ -25,10 +27,11 @@ const ResearchWorks = () => {
 
   return (
     <div className={`min-h-screen py-10 px-5 `}>
-      
       {research.map((uni, index) => (
         <div key={index} className="mb-10">
-          <h3 className="text-2xl font-semibold mb-4 text-center border-b pb-2">{uni.university}</h3>
+          <h3 className="text-2xl font-semibold mb-4 text-center border-b pb-2">
+            {uni.university}
+          </h3>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {uni.research_papers.map((paper, idx) => (
               <div
@@ -37,12 +40,20 @@ const ResearchWorks = () => {
                   dark ? "bg-gray-800" : "bg-white"
                 }`}
               >
-                <img src={paper.photoUrl} alt={paper.topic} className="w-full h-48 object-cover" />
+                <img
+                  src={paper.photoUrl}
+                  alt={paper.topic}
+                  className="w-full h-48 object-cover"
+                />
                 <div className="p-5">
                   <h3 className="text-xl font-semibold">{paper.topic}</h3>
                   <p className="text-sm text-gray-400">By {paper.writer}</p>
-                  <p className="text-sm text-gray-500">Journal: {paper.journal}</p>
-                  <p className="text-xs text-gray-500">Published: {paper.published_date}</p>
+                  <p className="text-sm text-gray-500">
+                    Journal: {paper.journal}
+                  </p>
+                  <p className="text-xs text-gray-500">
+                    Published: {paper.published_date}
+                  </p>
                   <a
                     href={paper.link}
                     target="_blank"

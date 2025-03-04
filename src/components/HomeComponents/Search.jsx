@@ -1,17 +1,23 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import Loading from "../Loading";
+import { AuthContext } from "../../provider/AuthProvider";
+import useGetAllUsers from "../Dashboard/user/AllUsers/useGetAllUsers";
 
 const fetchSearchResults = async (search) => {
   if (!search) return [];
-  const { data } = await axios.get(`http://localhost:5000/university/search/${search}`);
+  const { data } = await axios.get(
+    `https://collage-server-orcin.vercel.app/university/search/${search}`
+  );
   return data;
 };
 
 const fetchResearchData = async () => {
   try {
-    const response = await axios.get("http://localhost:5000/research");
+    const response = await axios.get(
+      "https://collage-server-orcin.vercel.app/research"
+    );
     return response.data;
   } catch (error) {
     console.error("Error fetching research papers:", error);
@@ -21,7 +27,9 @@ const fetchResearchData = async () => {
 
 const Search = () => {
   const [search, setSearch] = useState("");
-  
+  const { user, } = useContext(AuthContext);
+  const { users, refetch, isPending } = useGetAllUsers(user);
+
   const { data: results, isLoading: isLoadingSearch } = useQuery({
     queryKey: ["search", search],
     queryFn: () => fetchSearchResults(search),
@@ -34,7 +42,12 @@ const Search = () => {
   });
 
   return (
-    <div className="w-full max-h-screen bg-cover bg-center" style={{ backgroundImage: 'url("https://diu.ac/assets/images/slider/s11.jpeg")' }}>
+    <div
+      className="w-full max-h-screen bg-cover bg-center"
+      style={{
+        backgroundImage: 'url("https://diu.ac/assets/images/slider/s11.jpeg")',
+      }}
+    >
       <div className="w-full h-full bg-gradient-to-t from-black via-transparent to-transparent flex justify-center items-center p-4">
         <div className="relative w-full max-w-2xl p-8 bg-white bg-opacity-50 rounded-lg shadow-lg">
           <input
@@ -50,9 +63,17 @@ const Search = () => {
                 <Loading />
               ) : (
                 results?.map((university) => (
-                  <li key={university.id} className="p-3 flex justify-between items-center hover:bg-gray-100 cursor-pointer">
+                  <li
+                    key={university.id}
+                    className="p-3 flex justify-between items-center hover:bg-gray-100 cursor-pointer"
+                  >
                     <span>{university.name}</span>
-                    <a href={`/colleges/${university._id}`} className="text-blue-500">Details</a>
+                    <a
+                      href={`/colleges/${university._id}`}
+                      className={`text-blue-500 ${!users.email && "hidden"}`}
+                    >
+                      Details
+                    </a>
                   </li>
                 ))
               )}

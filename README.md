@@ -1,97 +1,98 @@
-### TaskStorm Frontend - README
+# 🎓 AcadEase - College Booking System
 
-# TaskStorm Frontend
+AcadEase is a **MERN stack-based** college booking platform where users can search for colleges, view details, and book admissions seamlessly. The platform features an intuitive **search system, college information display, and a streamlined admission process**.
 
-## 🔹 Short Description
+![AcadEase Screenshot](https://i.ibb.co.com/SXsBdhyY/image.png)
 
-TaskStorm is a full-featured task management application where users can add, edit, delete, and reorder tasks using a drag-and-drop interface. The frontend is built with React.js, Tailwind CSS, and DaisyUI for a clean and modern UI experience. The app ensures real-time updates and seamless user interactions.
+## 🚀 Live Preview  
+🔗 [Live App](https://your-live-link.com)  
 
-## 📺 Project Overview Video
+## 📂 Repositories  
+- **Frontend:** [GitHub - Client](https://github.com/engrsakib/collage-task-client)  
+- **Backend:** [GitHub - Server](https://github.com/engrsakib/collage-task-server)  
 
-[![TaskStorm - Task Management App](https://img.youtube.com/vi/LrYQfnD70tA/0.jpg)](https://youtu.be/LrYQfnD70tA)
+---
 
-🔗 **Watch the full demo here:** [TaskStorm - Task Management App](https://youtu.be/LrYQfnD70tA)
+## ✨ Features  
 
-## 🔹 Live Links
+✅ **College Search & Booking** – Find colleges and book admissions easily  
+✅ **Detailed College Profiles** – View research history, events, and sports details  
+✅ **Authentication System** – Login via Email/Password & Google  
+✅ **Admission System** – Apply for college admission with required details  
+✅ **User Reviews & Ratings** – Users can review and rate colleges  
+✅ **Profile Management** – Users can update their name, email, and university  
+✅ **Fully Responsive UI** – Works across desktops, tablets, and mobiles  
 
-- **Live App:** [TaskStorm Live](https://engrsakib-todo-applications.surge.sh/)
-- **Frontend Repository:** [GitHub - Frontend](https://github.com/engrsakib/simple-ToDo-frontend)
-- **Backend Repository:** [GitHub - Backend](https://github.com/engrsakib/simple-ToDo-Backend)
-- **Website:** [Md. Nazmus Sakib](https://www.engrsakib.com/)
-- **Contact:** info@engrsakib.com
+---
 
-## 🔹 Technologies Used
+## 📌 Pages & Routes  
 
-- **Frontend:** React.js, Tailwind CSS, DaisyUI
-- **State Management:** React Query
-- **Drag & Drop:** React Beautiful DnD, Hello Pangea DnD
-- **Authentication:** Firebase
-- **Routing:** React Router
-- **Animations & UI Enhancements:** Lottie React, React Awesome Reveal, React Icons
-- **Date Handling:** Date FNS
-- **API Requests:** Axios
+### 🔹 Home Page  
+- **Search Bar:** Search for colleges by name  
+- **College Cards:** Displays top 3 colleges with admission dates, events, and research info  
+- **College Image Gallery:** Showcases college graduates' group pictures  
+- **Research Section:** Displays research papers by college students  
+- **Review Section:** Shows user reviews and ratings  
 
-## 🔹 Dependencies
+### 🔹 College Page (`/colleges`)  
+- Displays **5-6 colleges** with images, ratings, admission dates, and research numbers  
+- Clicking "Details" shows **events, sports, and research details**  
 
-- @hello-pangea/dnd
-- @tanstack/react-query
-- @tanstack/react-router
-- axios
-- date-fns
-- firebase
-- jodit-react
-- lottie-react
-- react
-- react-beautiful-dnd
-- react-datepicker
-- react-dom
-- react-helmet
-- react-icons
-- react-loader-spinner
-- react-router-dom
-- react-sweetalert2
-- react-tooltip
+### 🔹 Admission Page (`/admission`)  
+- Displays college names  
+- Admission form fields:  
+  - Candidate Name  
+  - Subject  
+  - Email  
+  - Phone Number  
+  - Address  
+  - Date of Birth  
+  - Profile Image  
+- Clicking "Submit" saves data in "My College"  
 
-## 🔹 Installation Steps
+### 🔹 My College Page (`/my-college`)  
+- Displays user’s **admission details**  
+- Users can **add reviews and ratings**  
 
-Follow these steps to set up and run the frontend project:
+### 🔹 Profile Page (`/profile`)  
+- Displays user information  
+- Users can **edit Name, Email, University, and Address**  
 
-1️⃣ **Clone the repository**
+### 🔹 Authentication  
+- **Registration & Login** via Email/Password, Google  
+- **Password Reset Option**  
+- **Protected Routes:** Users must log in to see college details or add reviews  
 
+### 🔹 404 Page  
+- Custom **creative 404 page** for broken routes  
+
+---
+
+## 🛠️ Technologies Used  
+
+### **Frontend:**  
+- React.js  
+- Tailwind CSS, DaisyUI  
+- React Router  
+- Axios  
+- Firebase Authentication  
+
+### **Backend:**  
+- Node.js, Express.js  
+- MongoDB  
+- JWT Authentication  
+- Mongoose ORM  
+
+### **Deployment:**  
+- **Frontend:** Vercel / Netlify  
+- **Backend:** Vercel / Render  
+- **Database:** MongoDB Atlas  
+
+---
+
+## 📌 Installation Guide  
+
+### 1️⃣ Clone the Repository  
 ```bash
-git clone https://github.com/engrsakib/simple-ToDo-frontend.git
-cd simple-ToDo-frontend
-```
-
-2️⃣ **Install dependencies**
-
-```bash
-npm install
-```
-
-3️⃣ **Set up environment variables**  
-Create a `.env` file in the root directory and add:
-
-```
-VITE_API_BASE_URL=http://localhost:5000
-VITE_FIREBASE_API_KEY=your_firebase_api_key
-VITE_AUTH_DOMAIN=your_firebase_auth_domain
-VITE_PROJECT_ID=your_firebase_project_id
-VITE_STORAGE_BUCKET=your_firebase_storage_bucket
-VITE_MESSAGING_SENDER_ID=your_firebase_sender_id
-VITE_APP_ID=your_firebase_app_id
-```
-
-4️⃣ **Run the application**
-
-```bash
-npm run dev
-```
-
-5️⃣ **Frontend will run on**
-
-```
-http://localhost:5173
-```
-
-This frontend seamlessly integrates with the backend API to provide a smooth and real-time task management experience.
+git clone https://github.com/engrsakib/collage-task-client.git
+cd collage-task-client

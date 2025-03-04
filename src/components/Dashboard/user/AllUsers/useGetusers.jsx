@@ -10,7 +10,9 @@ const useGetusers = () => {
     queryKey: ["users"],
     queryFn: async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/users`);
+        const response = await axios.get(
+          `https://collage-server-orcin.vercel.app/users`
+        );
         return response.data;
       } catch (error) {
         console.error("Error fetching users:", error);

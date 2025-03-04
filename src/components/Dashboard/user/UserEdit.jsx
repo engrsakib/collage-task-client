@@ -347,7 +347,10 @@ const UserEdit = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         axios
-          .put(`http://localhost:5000/users/update/${users.email}`, formData)
+          .put(
+            `https://collage-server-orcin.vercel.app/users/update/${users.email}`,
+            formData
+          )
           .then((response) => {
             Swal.fire(
               "Saved!",
@@ -474,22 +477,22 @@ const UserEdit = () => {
           </div>
 
           <label className="block font-medium">
-          Select University
-          <select
-            name="university"
-            value={formData.university}
-            onChange={handleChange}
-            className="w-full mt-1 p-2 border rounded-lg"
-            required
-          >
-            <option value="">Choose a university</option>
-            {universities.map((uni, index) => (
-              <option key={index} value={uni}>
-                {uni}
-              </option>
-            ))}
-          </select>
-        </label>
+            Select University
+            <select
+              name="university"
+              value={formData.university}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border rounded-lg"
+              required
+            >
+              <option value="">Choose a university</option>
+              {universities.map((uni, index) => (
+                <option key={index} value={uni}>
+                  {uni}
+                </option>
+              ))}
+            </select>
+          </label>
 
           <div className="sm:col-span-2 flex justify-end">
             <button type="submit" className="btn btn-primary">

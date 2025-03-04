@@ -8,9 +8,9 @@ import useGetAllUsers from "../components/Dashboard/user/AllUsers/useGetAllUsers
 import Loading from "../components/Loading";
 
 const Admission = () => {
-    const { dark, setActive, user } = useContext(AuthContext);
-    const { users, isPending } = useGetAllUsers(user);
-    const navigate = useNavigate();
+  const { dark, setActive, user } = useContext(AuthContext);
+  const { users, isPending } = useGetAllUsers(user);
+  const navigate = useNavigate();
   const universities = [
     "East West University",
     "Southeast University",
@@ -22,8 +22,8 @@ const Admission = () => {
     "North South University",
   ];
 
-  if(isPending){
-    return <Loading></Loading>
+  if (isPending) {
+    return <Loading></Loading>;
   }
 
   const [formData, setFormData] = useState({
@@ -85,25 +85,34 @@ const Admission = () => {
       const imageUrl = imgResponse.data.data.url;
 
       // Send data to backend
-      const response = await axios.post("http://localhost:5000/admission", {
-        candidateName: formData.candidateName,
-        subject: formData.subject,
-        email: formData.email,
-        phone: formData.phone,
-        address: formData.address,
-        dob: formData.dob,
-        university: formData.university,
-        image: imageUrl,
-      });
+      const response = await axios.post(
+        "https://collage-server-orcin.vercel.app/admission",
+        {
+          candidateName: formData.candidateName,
+          subject: formData.subject,
+          email: formData.email,
+          phone: formData.phone,
+          address: formData.address,
+          dob: formData.dob,
+          university: formData.university,
+          image: imageUrl,
+        }
+      );
 
       if (response) {
-        Swal.fire("Success", "Admission form submitted successfully!", "success");
+        Swal.fire(
+          "Success",
+          "Admission form submitted successfully!",
+          "success"
+        );
         navigate("/my-college");
 
-        const response = await axios.put(`http://localhost:5000/users/role/${users?._id}`, {
-          university: formData.university,
-        });
-
+        const response = await axios.put(
+          `https://collage-server-orcin.vercel.app/users/role/${users?._id}`,
+          {
+            university: formData.university,
+          }
+        );
 
         setFormData({
           candidateName: "",
@@ -122,122 +131,120 @@ const Admission = () => {
     }
   };
 
-  
-
   return (
     <>
-    <div className="max-w-lg mx-auto mt-16 p-6 bg-white shadow-lg rounded-lg">
-      <h2 className="text-2xl font-bold mb-4">Admission Form</h2>
+      <div className="max-w-lg mx-auto mt-16 p-6 bg-white shadow-lg rounded-lg">
+        <h2 className="text-2xl font-bold mb-4">Admission Form</h2>
 
-      <form onSubmit={handleSubmit} className="space-y-4">
-        {/* University Selection */}
-        <label className="block font-medium">
-          Select University
-          <select
-            name="university"
-            value={formData.university}
-            onChange={handleChange}
-            className="w-full mt-1 p-2 border rounded-lg"
-            required
-          >
-            <option value="">Choose a university</option>
-            {universities.map((uni, index) => (
-              <option key={index} value={uni}>
-                {uni}
-              </option>
-            ))}
-          </select>
-        </label>
+        <form onSubmit={handleSubmit} className="space-y-4">
+          {/* University Selection */}
+          <label className="block font-medium">
+            Select University
+            <select
+              name="university"
+              value={formData.university}
+              onChange={handleChange}
+              className="w-full mt-1 p-2 border rounded-lg"
+              required
+            >
+              <option value="">Choose a university</option>
+              {universities.map((uni, index) => (
+                <option key={index} value={uni}>
+                  {uni}
+                </option>
+              ))}
+            </select>
+          </label>
 
-        {/* Input Fields */}
-        <input
-          type="text"
-          name="candidateName"
-          value={formData.candidateName}
-          onChange={handleChange}
-          placeholder="Candidate Name"
-          className="w-full p-2 border rounded-lg"
-          required
-        />
-        <input
-          type="text"
-          name="subject"
-          value={formData.subject}
-          onChange={handleChange}
-          placeholder="Subject"
-          className="w-full p-2 border rounded-lg"
-          required
-        />
-        <input
-          type="email"
-          name="email"
-          value={formData.email}
-          onChange={handleChange}
-          placeholder="Candidate Email"
-          className="w-full p-2 border rounded-lg"
-          readOnly
-        />
-        <input
-          type="tel"
-          name="phone"
-          value={formData.phone}
-          onChange={handleChange}
-          placeholder="Candidate Phone Number"
-          className="w-full p-2 border rounded-lg"
-          required
-        />
-        <input
-          type="text"
-          name="address"
-          value={formData.address}
-          onChange={handleChange}
-          placeholder="Address"
-          className="w-full p-2 border rounded-lg"
-          required
-        />
-
-        <input
-          type="text"
-          name="address"
-          value={formData.upazila}
-          onChange={handleChange}
-          placeholder="Address"
-          className="w-full p-2 border rounded-lg"
-          required
-        />
-        <input
-          type="date"
-          name="dob"
-          value={formData.dob}
-          onChange={handleChange}
-          className="w-full p-2 border rounded-lg"
-          required
-        />
-
-        {/* Image Upload */}
-        <label className="block font-medium">
-          Upload Image (Max 200KB, JPG/PNG)
+          {/* Input Fields */}
           <input
-            type="file"
-            accept="image/*"
-            onChange={handleImageChange}
+            type="text"
+            name="candidateName"
+            value={formData.candidateName}
+            onChange={handleChange}
+            placeholder="Candidate Name"
             className="w-full p-2 border rounded-lg"
             required
           />
-        </label>
+          <input
+            type="text"
+            name="subject"
+            value={formData.subject}
+            onChange={handleChange}
+            placeholder="Subject"
+            className="w-full p-2 border rounded-lg"
+            required
+          />
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleChange}
+            placeholder="Candidate Email"
+            className="w-full p-2 border rounded-lg"
+            readOnly
+          />
+          <input
+            type="tel"
+            name="phone"
+            value={formData.phone}
+            onChange={handleChange}
+            placeholder="Candidate Phone Number"
+            className="w-full p-2 border rounded-lg"
+            required
+          />
+          <input
+            type="text"
+            name="address"
+            value={formData.address}
+            onChange={handleChange}
+            placeholder="Address"
+            className="w-full p-2 border rounded-lg"
+            required
+          />
 
-        {/* Submit Button */}
-        <button
-          type="submit"
-          className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
-        >
-          Submit
-        </button>
-      </form>
-    </div>
-    <Helmet>
+          <input
+            type="text"
+            name="address"
+            value={formData.upazila}
+            onChange={handleChange}
+            placeholder="Address"
+            className="w-full p-2 border rounded-lg"
+            required
+          />
+          <input
+            type="date"
+            name="dob"
+            value={formData.dob}
+            onChange={handleChange}
+            className="w-full p-2 border rounded-lg"
+            required
+          />
+
+          {/* Image Upload */}
+          <label className="block font-medium">
+            Upload Image (Max 200KB, JPG/PNG)
+            <input
+              type="file"
+              accept="image/*"
+              onChange={handleImageChange}
+              className="w-full p-2 border rounded-lg"
+              required
+            />
+          </label>
+
+          {/* Submit Button */}
+          <button
+            type="submit"
+            className="w-full bg-blue-600 text-white p-2 rounded-lg hover:bg-blue-700"
+          >
+            Submit
+          </button>
+        </form>
+      </div>
+      <Helmet>
         <title>Admission Form</title>
-    </Helmet>
+      </Helmet>
     </>
   );
 };

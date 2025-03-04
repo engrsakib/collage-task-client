@@ -7,8 +7,7 @@ import useGetAllUsers from "../components/Dashboard/user/AllUsers/useGetAllUsers
 
 const Feedback = () => {
   const { user, dark } = useContext(AuthContext);
-  const { users,  } = useGetAllUsers(user);  
-
+  const { users } = useGetAllUsers(user);
 
   const {
     isLoading: isPending,
@@ -18,7 +17,9 @@ const Feedback = () => {
     queryKey: ["collage-home-feedback"],
     queryFn: async () => {
       try {
-        const response = await axios.get("http://localhost:5000/feedBack");
+        const response = await axios.get(
+          "https://collage-server-orcin.vercel.app/feedBack"
+        );
         return response.data;
       } catch (error) {
         console.error("Error fetching feedback:", error);
@@ -43,25 +44,23 @@ const Feedback = () => {
   }
 
   return (
-    <div
-      className={`${
-        dark ? "" : ""
-      } py-10 px-4`}
-    >
+    <div className={`${dark ? "" : ""} py-10 px-4`}>
       <div className="max-w-screen-xl mx-auto">
         <h2
           className={`text-3xl font-semibold text-center mb-6 ${
             dark ? "text-white" : "text-gray-900"
           }`}
-        >
-        
-        </h2>
+        ></h2>
         <div
           className={`grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6`}
         >
           {feedback.map((item, index) => {
-            const { university, email, candidateName, feedback: userFeedback } =
-              item;
+            const {
+              university,
+              email,
+              candidateName,
+              feedback: userFeedback,
+            } = item;
             return (
               <div
                 key={index}

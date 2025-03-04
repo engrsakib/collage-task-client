@@ -6,7 +6,6 @@ import { AuthContext } from "../../provider/AuthProvider";
 import useGetAllUsers from "../Dashboard/user/AllUsers/useGetAllUsers";
 import Clg from "../../pages/Clg";
 
-
 const HomeUniversity = () => {
   const { setdark, dark, user } = useContext(AuthContext);
   const { users } = useGetAllUsers(user);
@@ -19,7 +18,9 @@ const HomeUniversity = () => {
     queryKey: ["collage-home"],
     queryFn: async () => {
       try {
-        const response = await axios.get("http://localhost:5000/university/home");
+        const response = await axios.get(
+          "https://collage-server-orcin.vercel.app/university/home"
+        );
         return response.data;
       } catch (error) {
         console.error("Error fetching blogs:", error);
@@ -27,19 +28,20 @@ const HomeUniversity = () => {
       }
     },
   });
-  
 
   return (
     <>
-        <div className="mt-20">
-            <h1 className="text-3xl font-bold text-center mb-6">OUR Reputed University</h1>
-        </div>
-    
-        <div className="container mt-20 lg:mt-36">
-            {
-                College.map((clg, i)=><Clg key={i} clg={clg} />)
-            }
-        </div>
+      <div className="mt-20">
+        <h1 className="text-3xl font-bold text-center mb-6">
+          OUR Reputed University
+        </h1>
+      </div>
+
+      <div className="container mt-20 lg:mt-36">
+        {College.map((clg, i) => (
+          <Clg key={i} clg={clg} />
+        ))}
+      </div>
 
       <Helmet>
         <meta charSet="utf-8" />

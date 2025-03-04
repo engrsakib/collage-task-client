@@ -29,7 +29,10 @@ const WriteFeadBack = () => {
 
     try {
       // Send data to server using Axios
-      const response = await axios.post("http://localhost:5000/feedback", feedbackData);
+      const response = await axios.post(
+        "https://collage-server-orcin.vercel.app/feedback",
+        feedbackData
+      );
 
       // If submission is successful, clear the form and show success alert
       if (response.status === 200) {
@@ -56,7 +59,10 @@ const WriteFeadBack = () => {
 
       <form onSubmit={handleSubmit} className="w-full max-w-lg">
         <div className="mb-4">
-          <label htmlFor="feedback" className="block text-lg font-medium text-gray-700 mb-2">
+          <label
+            htmlFor="feedback"
+            className="block text-lg font-medium text-gray-700 mb-2"
+          >
             Feedback
           </label>
           <textarea

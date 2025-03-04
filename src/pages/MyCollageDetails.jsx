@@ -15,10 +15,8 @@ const MyCollageDetails = () => {
   const { user } = useContext(AuthContext);
   const { users } = useGetAllUsers(user);
   const { admitedUser, isPending } = useGetAdmitionUser();
-  
-  const { university } = users;
 
-  
+  const { university } = users;
 
   const {
     isLoading: isPendings,
@@ -29,7 +27,7 @@ const MyCollageDetails = () => {
     queryFn: async () => {
       try {
         const response = await axios.get(
-          `http://localhost:5000/my-university/${university}`
+          `https://collage-server-orcin.vercel.app/my-university/${university}`
         );
         return response.data;
       } catch (error) {
@@ -42,7 +40,7 @@ const MyCollageDetails = () => {
   useEffect(() => {
     // Ensure refetch is triggered when university changes
     if (university) {
-      refetch(); 
+      refetch();
     }
   }, [university, refetch]); // Depend on university
 
@@ -62,7 +60,6 @@ const MyCollageDetails = () => {
     );
   }
 
-
   return (
     <>
       <div className="flex flex-col mt-12 lg:flex-row gap-8 px-6 lg:px-16 py-8">
@@ -75,16 +72,26 @@ const MyCollageDetails = () => {
           />
           <h1 className="text-3xl font-bold mt-4">{data?.name}</h1>
           <p className="text-gray-600 mt-2">
-            <span className="font-semibold badge ">Types: {"Private University"}</span>
+            <span className="font-semibold badge ">
+              Types: {"Private University"}
+            </span>
           </p>
-          <div className={`${active ? "bg-info" : "bg-red-400"} mt-4 p-4 rounded-md`}>
+          <div
+            className={`${
+              active ? "bg-info" : "bg-red-400"
+            } mt-4 p-4 rounded-md`}
+          >
             <p className="text-sm font-medium">
               <i className="fas fa-shield-alt mr-2 text-white">
                 {active ? "Admisson on going" : "Closed"}
               </i>
             </p>
           </div>
-          <p className={`${dark ? "text-gray-200" : "text-gray-800"} mt-4 text-justify`}>
+          <p
+            className={`${
+              dark ? "text-gray-200" : "text-gray-800"
+            } mt-4 text-justify`}
+          >
             {data?.descriptions}
           </p>
           <img
@@ -100,12 +107,16 @@ const MyCollageDetails = () => {
           <ul className="mt-4 space-y-2">
             <li className="flex justify-between">
               <p className="font-medium">Applications Fees</p>
-              <p className="text-gray-500">{data?.admission_process?.fees?.application_fee}</p>
+              <p className="text-gray-500">
+                {data?.admission_process?.fees?.application_fee}
+              </p>
             </li>
 
             <li className="flex justify-between">
               <p className="font-medium">Semister Fees</p>
-              <p className="text-gray-500">{data?.admission_process?.fees?.semester_fee}</p>
+              <p className="text-gray-500">
+                {data?.admission_process?.fees?.semester_fee}
+              </p>
             </li>
 
             <li className="flex justify-between">
@@ -123,7 +134,11 @@ const MyCollageDetails = () => {
 
             <h3 className="mt-6 text-lg font-semibold">Events</h3>
 
-            <p className={`${dark ? "text-gray-200" : "text-gray-800"} mt-4 text-justify`}>
+            <p
+              className={`${
+                dark ? "text-gray-200" : "text-gray-800"
+              } mt-4 text-justify`}
+            >
               {data?.events?.descriptions}
             </p>
 
@@ -173,11 +188,16 @@ const MyCollageDetails = () => {
             </li>
             <li className="flex justify-between">
               <p className="font-medium">Department</p>
-              <p className="text-gray-500">{data?.research_works[0]?.department}</p>
+              <p className="text-gray-500">
+                {data?.research_works[0]?.department}
+              </p>
             </li>
             <li className="flex justify-between">
               <p className="font-medium">Publication Link</p>
-              <a href={data?.research_works[0]?.publication_link} className="btn btn-sm ">
+              <a
+                href={data?.research_works[0]?.publication_link}
+                className="btn btn-sm "
+              >
                 Read Article
               </a>
             </li>

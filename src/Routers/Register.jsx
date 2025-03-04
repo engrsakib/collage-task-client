@@ -402,7 +402,7 @@ const Register = () => {
 
           // Save user data to database
           axios
-            .post("http://localhost:5000/users", dataToSend)
+            .post("https://collage-server-orcin.vercel.app/users", dataToSend)
             .then(() => {
               Swal.fire(
                 "Success!",
@@ -478,7 +478,6 @@ const Register = () => {
                 />
               </div>
 
-          
               {/* Avatar */}
               <div className="mb-4">
                 <input

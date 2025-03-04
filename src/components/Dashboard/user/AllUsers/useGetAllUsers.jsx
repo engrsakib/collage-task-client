@@ -14,7 +14,7 @@ const useGetAllUsers = (user) => {
       }
       try {
         const response = await axios.get(
-          `http://localhost:5000/users/${user?.email}`
+          `https://collage-server-orcin.vercel.app/users/${user?.email}`
         );
         return response.data;
       } catch (error) {
