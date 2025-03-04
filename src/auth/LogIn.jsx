@@ -1,13 +1,14 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useRef, useState } from "react";
 import { AiFillEye, AiFillEyeInvisible } from "react-icons/ai";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { AuthContext } from "../provider/AuthProvider";
 import Swal from "sweetalert2";
 import { Helmet } from "react-helmet";
 import Google from "../components/Google";
+import { sendPasswordResetEmail } from "firebase/auth";
 
 const LogIn = () => {
-  const { dark, logInMail, setUser, user } = useContext(AuthContext);
+  const { dark, logInMail, setUser, user, auth } = useContext(AuthContext);
   const location = useLocation();
   const [formData, setFormData] = useState({
     mail: "",
@@ -61,6 +62,27 @@ const LogIn = () => {
     setFormData(credentials);
   };
 
+  const emailRef = useRef();
+  // reset
+  const handleReset = ()=>{
+    const email = emailRef.current.value;
+    if(!email){
+      Swal.fire("Please write your mail","","error");
+    }else{
+      sendPasswordResetEmail(auth, email)
+  .then(() => {
+    // Password reset email sent!
+    // ..
+    Swal.fire("please check your mail","","success");
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    // ..
+  });
+    }
+  }
+
   return (
     <>
       <div className="flex flex-col lg:flex-row items-center min-h-screen bg-gray-100 p-4">
@@ -95,6 +117,7 @@ const LogIn = () => {
                   placeholder="Email"
                   className="input input-bordered w-full"
                   value={formData.mail}
+                  ref={emailRef}
                   required
                   onChange={handleChange}
                 />
@@ -134,7 +157,7 @@ const LogIn = () => {
                   />
                   <span>Remember Me</span>
                 </label>
-                <a href="/auth/reset-password" className="text-sm text-blue-500 hover:underline">
+                <a onClick={handleReset} className="text-sm text-blue-500 hover:underline">
                   Forgot Password?
                 </a>
               </div>

@@ -122,6 +122,7 @@ const AuthProvider = ({ children }) => {
     setLoadding,
     setActive,
     active,
+    auth,
   };
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
