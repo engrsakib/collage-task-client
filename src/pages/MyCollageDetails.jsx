@@ -8,10 +8,12 @@ import axios from "axios";
 import Loading from "../components/Loading";
 import useGetAdmitionUser from "../components/Dashboard/user/AllUsers/useGetAdmitionUser";
 import WriteFeadBack from "./WriteFeadBack";
+import useGetAllUsers from "../components/Dashboard/user/AllUsers/useGetAllUsers";
 
 const MyCollageDetails = () => {
   const { dark, setActive, active } = useContext(AuthContext);
   const { user } = useContext(AuthContext);
+  const { users } = useGetAllUsers(user);
   const { admitedUser, isPending } = useGetAdmitionUser();
   
   const { university } = admitedUser;

@@ -31,7 +31,8 @@ const Admission = () => {
     subject: "",
     email: users.email,
     phone: "",
-    address: "",
+    address: users.district,
+    upazila: users.upazila,
     dob: "",
     university: "",
     image: null,
@@ -115,7 +116,7 @@ const Admission = () => {
     }
   };
 
-  console.log(users)
+  
 
   return (
     <>
@@ -183,6 +184,16 @@ const Admission = () => {
           type="text"
           name="address"
           value={formData.address}
+          onChange={handleChange}
+          placeholder="Address"
+          className="w-full p-2 border rounded-lg"
+          required
+        />
+
+        <input
+          type="text"
+          name="address"
+          value={formData.upazila}
           onChange={handleChange}
           placeholder="Address"
           className="w-full p-2 border rounded-lg"
